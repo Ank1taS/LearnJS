@@ -62,7 +62,7 @@ movie.message(); // you are watching Man of steel a sci-fri movie
 console.log(this); // {}
 // output is {} represnets an empty object. it is because it refers to the node's[stand alone engine] global env and currently it is empty
 // but if we run this in a browser, it will show contents of browser's object ie window object
-// NOTE: cant user this with for a function instance
+// NOTE: cant use this for a function instance
 
 //
 
@@ -88,7 +88,7 @@ console.log(add2(5, 10)); // 15
 const msg2 = () => console.log("you are calling arrow function.");
 msg2(); // you are calling arrow function.
 
-// ?? TAKE AwAY: in arrow function, if you specify return then it must be with in {} it is explicit return otherwise you can specify it () without return keyword which is implicit in nature
+// ?? TAKE AwAY: In the arrow function, if you specify return then it must be with in {} it is explicitly returned. Otherwise, you can specify it () without return keyword which is implicit in nature
 // const add2 = (num1, num2) => num1 + num2;    // ok
 // const add2 = (num1, num2) => (num1 + num2);  // ok
 // const add2 = (num1, num2) => (return num1 + num2);   // error return require {}
