@@ -5,6 +5,11 @@
 // is resizable
 // Array() can be called with or without new. Both create a new Array instance
 
+const arrayEmpty = new Array(2);
+
+console.log(arrayEmpty.length); // 2
+console.log(arrayEmpty[0]); // undefined; actually, it is an empty slot
+
 //================= mering 2 array ============
 const arr1 = [10, 20, 30];
 const arr2 = [100, 200, 300];
