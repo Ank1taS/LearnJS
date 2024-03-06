@@ -22,16 +22,32 @@ console.log(arr1.concat(arr2)); //[ 10, 20, 30, 100, 200, 300 ]
 // 3. spreeds: can spread and concat multiple array simultanously
 const arr3 = [1000];
 const arr4 = [...arr1, ...arr2, ...arr3];
-console.log(arr4); //[ 10, 20, 30, 100, 200, 300 ]
+console.log(arr4); 
+//[
+//     10,  20,  30,
+//    100, 200, 300,
+//   1000
+// ]
 
 // spreading out array of any depth to any depth
 // flat: Returns a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 const arr5 = [1, 2, [30, 40, [500, [6000]], 70], 8, [90]];
-console.log(arr5.flat(2));
+console.log(arr5.flat(2));  // [ 1, 2, 30, 40, 500, [ 6000 ], 70, 8, 90 ]
 console.log(arr5.flat(5));
+// [
+//     1,    2, 30, 40,
+//   500, 6000, 70,  8,
+//    90
+// ]
 
-console.log(arr5.flat(Infinity));
+console.log(arr5.flat(Infinity));  // to flat the entire array
+// [
+//     1,    2, 30, 40,
+//   500, 6000, 70,  8,
+//    90
+// ]
 console.log(arr5.flat()); // default 1 depth
+// [ 1, 2, 30, 40, [ 500, [ 6000 ] ], 70, 8, 90 ]
 
 // ===== some other imp operations
 // from : Creates an array from an array-like object.
