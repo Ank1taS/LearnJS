@@ -28,6 +28,7 @@ console.log(user2[sym2]); // Output: undefined (since sym2 is not used as a symb
 console.log(user2.sym2); // Output: "userKey2" (accessing via regular string key)
 console.log(typeof user2[sym1]); // Output: "string" (since the value associated with sym1 is a string)
 console.log(typeof user2[sym2]); // Output: "undefined" (since sym2 is not used as a symbol key)
+console.log(typeof user2.sym2); // Output: "string" 
 
 console.log(user2); // sym2: 'userKey2' |-difference is the type-| [Symbol(key1)]: 'userKey1'
 // {
@@ -109,3 +110,4 @@ console.log(user3.hasOwnProperty("fullname")); // true
 
 // //
 // singleton created by constructor not by literals - object.create()
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
