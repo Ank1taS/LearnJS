@@ -5,14 +5,14 @@
 // for of loop
 const arr = [10, 20, 30, 40];
 
-// for (const num of arr) {
-//   console.log(num);
-// }
+for (const num of arr) {
+  console.log(num);
+}
 
-// const name = "ankita";
-// for (const ch of name) {
-//   console.log(ch);
-// }
+const name = "ankita";
+for (const ch of name) {
+  console.log(ch);
+}
 
 //
 
@@ -33,10 +33,10 @@ console.log(map);
 //   'West Bengal' => 'Kolkata'
 // }
 
-// for (const [key, value] of map) {
-//   console.log(`state ${key} - capital ${value}`);
-//   //   console.log(key);
-// }
+for (const [key, value] of map) {
+  console.log(`state ${key} - capital ${value}`);
+  //   console.log(key);
+}
 
 //
 
@@ -104,4 +104,34 @@ function print(item) {
 }
 arr.forEach(print); // 10 20 30 40
 
-arr.forEach();
+const coding = [
+  {
+    languageName: "c++",
+    languageFileName: "cpp",
+  },
+  {
+    languageName: "java",
+    languageFileName: "js",
+  },
+  {
+    languageName: "python",
+    languageFileName: "py",
+  },
+];
+
+coding.forEach((language) => {
+  console.log(
+    `${language.languageName} will be on ${language.languageFileName} file`
+  );
+});
+
+// what to Return a value from for each?? then use filter()
+const arr2 = [10, 20, 300, 40, 50, 600];
+const newarr2 = arr2.filter((num) => num > 100);
+console.log(newarr2); // [ 300, 600 ]
+// if num > 100 condition in {} ie scope then explicitly return values
+console.log(
+  arr2.filter((num) => {
+    return num > 100;
+  })
+); // [ 300, 600 ]
