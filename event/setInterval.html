@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval Demo</title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+  </body>
+
+  <script>
+    // const sayName = function (str) {
+    //   // console.log( "Ank1taS");
+    //   console.log(Date.now() + " Ank1taS");
+    //   console.log(Date.now() + " Ank1taS " + str);
+    // };
+
+    // setInterval(sayName, 3000);
+    // setInterval(sayName, 3000, "Sahoo");
+
+    // // OUT PUT:
+    // // 1713080301323 Ank1taS
+    // // 1713080301323 Ank1taS undefined
+
+    // start printing name on console in 1 sec intervals after clicking start and stop printing on clicking stop button
+
+    const shoutOutName = function () {
+      console.log("Hello Ankita!");
+    };
+    var shoutOutEvent;
+
+    document.querySelector("#start").addEventListener("click", function () {
+      shoutOutEvent = setInterval(shoutOutName, 2000);
+    });
+
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearInterval(shoutOutEvent);
+      console.log("Shout-out event stopped");
+    });
+  </script>
+</html>
