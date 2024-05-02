@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api request demo</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    0 UNSENT Client has been created. open() not called yet.
+    <br />
+    1 OPENED open() has been called.
+    <br />
+    2 HEADERS_RECEIVED send() has been called, and headers and status are
+    available.
+    <br />
+    3 LOADING Downloading; responseText holds partial data.
+    <br />
+    4 DONE The operation is complete.
+    <br />
+
+    <!-- <div id="profile">
+
+    </div> -->
+
+    <table>
+      <tbody>
+        <tr id="img"></tr>
+        <tr id="name"></tr>
+        <tr id="followers"></tr>
+      </tbody>
+    </table>
+  </body>
+
+  <button id="show">Show profile</button>
+
+  <script>
+    const xhr = new XMLHttpRequest();
+    const requestUrl = "https://api.github.com/users/Ank1taS";
+
+    xhr.open("GET", requestUrl);
+
+    xhr.onreadystatechange = function () {
+      // console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        // const data = xhr.responseTex);  // default return is string
+        // console.log(typeof data);  // string
+        // from string we cant retrive data like objects so need to convert it to JSON type
+
+        const data = JSON.parse(xhr.responseText);
+
+        console.log(typeof data);
+
+        console.log(data);
+        console.log(data.name);
+
+        document.querySelector("#show").addEventListener("click", function (e) {
+          const img = document.createElement("img");
+          img.src = data.avatar_url;
+          // Append the image element to the tr with id "img"
+          document.getElementById("img").appendChild(img);
+
+          // createTextNode is generally more efficient than setting innerHTML because it avoids parsing and rendering HTML
+          const name = document.createTextNode(data.name);
+          document.querySelector("#name").appendChild(name);
+          const followers = document.createTextNode(data.followers);
+          document.querySelector("#followers").appendChild(followers);
+        });
+      }
+    };
+
+    xhr.send();
+  </script>
+</html>
