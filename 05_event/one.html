@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Some Images</h2>
+
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    // don't user the specific
+    // document.getElementById("river").onclick = function () {
+    //   alert("river clicked");
+    // };
+
+    // some more methods
+    // attachEvent()
+    //jQuery - on
+
+    // imp events: types, timestamp, preventDefault,
+    // target, toElement, srElement, currentTarget
+    // clientX, clientY, screenX, etc
+    // altkey, ctrlkey, shiftkey, keyCode
+    document.getElementById("river").addEventListener(
+      "click",
+      function (e) {
+        console.log(e);
+        alert("river clicked by addEventListener");
+      },
+      false
+    );
+    // ==========  event propagation: ==========
+    // true: capturing - top to down execution
+    // false: bubbling - bottom to up execution : default
+
+    // e is event object
+    document.getElementById("images").addEventListener("click", function (e) {
+      console.log("parent ul is clicked");
+    });
+
+    document.getElementById("river").addEventListener("click", function (e) {
+      console.log("river is clicked");
+    });
+
+    document.getElementById("owl").addEventListener("click", function (e) {
+      console.log("owl is clicked");
+      // stopPropagation: to stop the propagation process that the event will not go up by bubbling
+      e.stopPropagation();
+    });
+
+    //
+    // defaultPrevented
+    document.getElementById("google").addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("google clicked");
+    });
+
+    // remove a content on click
+    document.querySelector("#images").addEventListener(
+      "click",
+      function (e) {
+        console.log(e.target); // only the img tag
+        console.log(e.target.parentNode); // img tag along with the li tag
+
+        let removeIt = e.target.parentNode;
+        // way 1 to remove a li
+        // removeIt.remove();
+
+        // way 2: get parentNode [here li is parent of img], remove the selected childnode
+        removeIt.parentNode.removeChild(removeIt);
+
+        // ========= EVENT SPILLOVER ===========
+        //by clicking and removeing directly, what ever is clicked,its parent will be removed. so if we clicked the a tag then entire list/ ul tag will be removed.
+        // to prevent it we need to check the tag of clicked node
+        if (e.target.tagName === "IMG") {
+          console.log(e.target.tagName);
+          let removeIt = e.target.parentNode;
+          removeIt.remove();
+        }
+      },
+      false
+    );
+  </script>
+</html>

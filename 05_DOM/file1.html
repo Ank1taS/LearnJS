@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Dom learning1</title>
+    <style>
+      .bg-color {
+        background-color: #212121;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-color">
+    <h1 id="heading">Welcome to page</h1>
+    <p>Hello I am Ankita Sahoo</p>
+    <div class="parent">
+      <div class="days">Mondey</div>
+      <div class="days">Tuesday</div>
+      <div class="days">Wednessday</div>
+      <div class="days">Thursday</div>
+      <div class="days">Friday</div>
+    </div>
+  </body>
+
+  <script>
+    const parent = document.querySelector(".parent");
+    console.log(parent);
+    console.log(parent.children); // HTMLCollection(5) [div.days, div.days, div.days, div.days, div.days]
+    console.log(parent.children.length); // 5
+    console.log(parent.children[1]); // <div class="days">Tuesday</div>
+
+    console.log(parent.children[1].innerHTML); // Tuesday
+
+    // access each element of the parent class
+    // there is no for each loop for HTMLcollection but we can iterate though normal forloop
+    for (let index = 0; index < parent.children.length; ++index) {
+      // const element = array[index];
+      console.log(parent.children[index].innerHTML);
+      // Mondey
+      // Wednessday
+      // Thursday
+      // Tuesday
+      // Friday
+    }
+
+    // apply style to a child div
+    parent.children[1].style.color = "orange";
+
+    // access 1st child of parent class
+    console.log(parent.firstElementChild.innerHTML); // Monday
+    // access last child of parent class
+    console.log(parent.lastElementChild.innerHTML); // Friday
+
+    // access parent using child HTMLnode
+    const day1 = document.querySelector(".days");
+    console.log(day1); // <div class="days">Mondey</div>
+    console.log(day1.innerHTML); // Monday
+    console.log(day1.parentElement); // return the entire parent HTMLnode content
+
+    //
+
+    //
+    // .children vs .childNodes
+    // .children return HTMLCollection but .childNodes return NodeList
+    console.log(parent.children); // HTMLCollection(5) [div.days, div.days, div.days, div.days, div.days]  : lenth is 5 because it contains 5 child html elementnodes
+    console.log(parent.childNodes); // NodeList(11) [text, div.days, text, div.days, text, div.days, text, div.days, text, div.days, text] : lenth is 11 because it contains 5 child html element nodes along with text node (that is break poinrs or new line). it may also contains atribute node and comment nodes
+    //
+  </script>
+</html>

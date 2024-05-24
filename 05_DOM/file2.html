@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM2: add element along with content</title>
+  </head>
+  <body style="background-color: #212121; color: white"></body>
+
+  <script>
+    const div = document.createElement("div"); // creates the HTML element specified by tagName
+    console.log(div); // <div></div> : output when only this line of code was there no following code existed
+
+    // add class selector to the div
+    div.className = "mainclass"; //
+    // append more classes to same div
+    const class1 = "class2";
+    const class2 = Math.round(Math.random() * 10 + 1);
+    div.classList.add(class1, class2);
+
+    // add id selector to the div
+    div.id = "mainId";
+
+    // add style atrributes the div
+    div.style.backgroundColor = "green";
+
+    div.innerHTML = "Welcome...";
+    // innerHTML overrides contents of the element / html node so its is better not to use it. here we are using its 1st and there no contains before it
+
+    const content = document.createTextNode("Ankita here.");
+    //The Element.append() method inserts a set of Node objects or string objects after the last child of the Element. String objects are inserted as equivalent Text nodes.
+    div.appendChild(content);
+
+    // add entire div to body as a child node
+    document.body.appendChild(div);
+  </script>
+</html>
